@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Container, Title } from './styles';
 
 export const Home: React.FunctionComponent = () => {
   return (
-    <View>
-      <Text>Home Page</Text>
-    </View>
+    <Container>
+      <Title>Home Page</Title>
+    </Container>
   );
 };
