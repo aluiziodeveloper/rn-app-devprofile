@@ -1,10 +1,10 @@
 import React from 'react';
-import { Container, Title } from './styles';
+import { Container, Header } from './styles';
 
 export const Home: React.FunctionComponent = () => {
   return (
     <Container>
-      <Title>Home Page</Title>
+      <Header />
     </Container>
   );
 };
