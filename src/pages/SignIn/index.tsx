@@ -2,7 +2,14 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import { Button } from '../../components/Form/Button';
 import { Input } from '../../components/Form/Input';
-import { Container, Content, Logo, Title } from './styles';
+import {
+  Container,
+  Content,
+  ForgotPasswordButton,
+  ForgotPasswordTitle,
+  Logo,
+  Title,
+} from './styles';
 import logo from '../../assets/logo.png';
 
 export const SignIn: React.FunctionComponent = () => {
@@ -19,6 +26,10 @@ export const SignIn: React.FunctionComponent = () => {
           <Input placeholder="Senha" />
 
           <Button title="Entrar" />
+
+          <ForgotPasswordButton>
+            <ForgotPasswordTitle>Esqueci minha senha</ForgotPasswordTitle>
+          </ForgotPasswordButton>
         </Content>
       </Container>
     </ScrollView>
