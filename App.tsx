@@ -8,7 +8,7 @@ import {
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto';
 import AppLoading from 'expo-app-loading';
-import { SignUp } from './src/pages/SignUp';
+import { Routes } from './src/routes';
 
 const App: React.FunctionComponent = () => {
   const [fontsLoaded] = useFonts({
@@ -23,7 +23,7 @@ const App: React.FunctionComponent = () => {
   return (
     <NavigationContainer>
       <ThemeProvider theme={theme}>
-        <SignUp />
+        <Routes />
       </ThemeProvider>
     </NavigationContainer>
   );
