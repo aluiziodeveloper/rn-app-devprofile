@@ -1,5 +1,15 @@
 import React from 'react';
-import { Container, Header } from './styles';
+import {
+  Container,
+  Header,
+  UserAvatar,
+  UserAvatarButton,
+  UserGreeting,
+  UserInfo,
+  UserInfoDetail,
+  UserName,
+  UserWrapper,
+} from './styles';
 
 import avatarDefault from '../../assets/avatar02.png';
 
@@ -9,7 +19,7 @@ export const Home: React.FunctionComponent = () => {
       <Header>
         <UserWrapper>
           <UserInfo>
-            <UserAvatarButton onPress={}>
+            <UserAvatarButton onPress={() => {}}>
               <UserAvatar source={avatarDefault} />
             </UserAvatarButton>
             <UserInfoDetail>
