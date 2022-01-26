@@ -2,6 +2,9 @@ import React from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { useForm, FieldValues } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
 import { Button } from '../../components/Form/Button';
 import { InputControl } from '../../components/Form/InputControl';
 import {
@@ -23,8 +26,20 @@ interface IFormInputs {
   [name: string]: any;
 }
 
+const formSchema = yup.object({
+  name: yup.string().required('Informe o nome completo.'),
+  email: yup.string().email('Email inválido.').required('Informe o email.'),
+  password: yup.string().required('Informe a senha.'),
+});
+
 export const SignUp: React.FunctionComponent = () => {
-  const { handleSubmit, control } = useForm<FieldValues>();
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<FieldValues>({
+    resolver: yupResolver(formSchema),
+  });
 
   const { goBack } = useNavigation<ScreenNavigationProp>();
 
@@ -58,6 +73,7 @@ export const SignUp: React.FunctionComponent = () => {
               control={control}
               name="name"
               placeholder="Nome completo"
+              error={errors.name && errors.name.message}
             />
             <InputControl
               autoCapitalize="none"
@@ -66,6 +82,7 @@ export const SignUp: React.FunctionComponent = () => {
               name="email"
               placeholder="Email"
               keyboardType="email-address"
+              error={errors.email && errors.email.message}
             />
             <InputControl
               control={control}
@@ -73,6 +90,7 @@ export const SignUp: React.FunctionComponent = () => {
               placeholder="Senha"
               autoCorrect={false}
               secureTextEntry
+              error={errors.password && errors.password.message}
             />
 
             <Button title="Entrar" onPress={handleSubmit(handleSignUp)} />
