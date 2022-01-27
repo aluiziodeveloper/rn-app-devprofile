@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import {
   Container,
   Content,
@@ -26,11 +27,16 @@ interface RouteParams {
   userId: string;
 }
 
+interface ScreenNavigationProp {
+  goBack: () => void;
+}
+
 export const UserDetails: React.FunctionComponent = () => {
   const [userDetails, setUserDetails] = React.useState<IUser>({} as IUser);
   const route = useRoute();
   const { userId } = route.params as RouteParams;
   const { user } = useAuth();
+  const { goBack } = useNavigation<ScreenNavigationProp>();
 
   React.useEffect(() => {
     const loadUser = async () => {
@@ -43,8 +49,8 @@ export const UserDetails: React.FunctionComponent = () => {
   return (
     <Container>
       <Header>
-        <GoBackButton>
-          <Icon />
+        <GoBackButton onPress={goBack}>
+          <Icon name="chevron-left" />
         </GoBackButton>
         <HeaderTile>Usuários</HeaderTile>
         <UserAvatar
@@ -67,8 +73,8 @@ export const UserDetails: React.FunctionComponent = () => {
         </UserNameDetail>
 
         <UserEmailDetail>
-          <EmailTitle>NAME</EmailTitle>
-          <EmailData>{userDetails.name}</EmailData>
+          <EmailTitle>EMAIL</EmailTitle>
+          <EmailData>{userDetails.email}</EmailData>
         </UserEmailDetail>
       </Content>
     </Container>
