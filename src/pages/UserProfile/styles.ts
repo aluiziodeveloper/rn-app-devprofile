@@ -17,6 +17,8 @@ export const Header = styled.View`
   padding: ${RFValue(48)}px ${RFValue(24)}px ${RFValue(8)}px;
 `;
 
+export const HeaderTop = styled.View``;
+
 export const GoBackButton = styled.TouchableOpacity`
   margin-right: ${RFValue(16)}px;
 `;
