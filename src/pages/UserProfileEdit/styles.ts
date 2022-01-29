@@ -9,12 +9,9 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   width: 100%;
-  height: ${RFPercentage(28)}px;
+  height: ${RFPercentage(16)}px;
   background-color: ${({ theme }) => theme.colors.secondary};
-`;
-
-export const HeaderTop = styled.View`
-  width: 100%;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
   padding: ${RFValue(48)}px ${RFValue(24)}px ${RFValue(8)}px;
@@ -31,16 +28,9 @@ export const HeaderTitle = styled.Text`
   font-weight: bold;
 `;
 
-export const PhotoContainer = styled.View`
-  width: ${RFValue(120)}px;
-  height: ${RFValue(120)}px;
-  border-radius: 10px;
-  margin: ${RFValue(48)}px auto;
-`;
-
 export const UserAvatar = styled.Image`
-  width: ${RFValue(120)}px;
-  height: ${RFValue(120)}px;
+  width: ${RFValue(48)}px;
+  height: ${RFValue(48)}px;
   border-radius: 10px;
   margin-left: auto;
 `;
@@ -67,8 +57,8 @@ export const Logo = styled.Image`
 `;
 
 export const Icon = styled(Feather)`
-  font-size: ${RFValue(20)}px;
-  color: ${({ theme }) => theme.colors.primary};
+  font-size: ${RFValue(24)}px;
+  color: ${({ theme }) => theme.colors.gray800};
 `;
 
 export const BackToSignIn = styled.TouchableOpacity`
