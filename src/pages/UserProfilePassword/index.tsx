@@ -57,6 +57,8 @@ export const UserProfilePassword: React.FunctionComponent = () => {
 
   const handleUpdatePassword = async (form: IFormInputs) => {
     const data = {
+      name: user.name,
+      email: user.email,
       old_password: form.old_password,
       password: form.password,
       password_confirmation: form.password_confirmation,
@@ -64,10 +66,12 @@ export const UserProfilePassword: React.FunctionComponent = () => {
 
     try {
       const response = await api.put('profile', data);
+      console.log(response.data);
       updateUser(response.data);
       Alert.alert('Senha atualizada', 'Senha atualizada com sucesso.');
       goBack();
     } catch (error) {
+      //console.log(JSON.stringify(error));
       Alert.alert(
         'Erro ao atualizar',
         'Ocorreu um erro ao atualizar a senha. Tente novamente.',
@@ -98,29 +102,46 @@ export const UserProfilePassword: React.FunctionComponent = () => {
             />
           </Header>
           <Content>
-            <Title>Editar dados do perfil</Title>
+            <Title>Alterar senha</Title>
             <InputControl
               autoCapitalize="none"
               autoCorrect={false}
               control={control}
-              name="name"
-              placeholder="Nome completo"
-              error={errors.name && errors.name.message}
+              secureTextEntry
+              name="old_password"
+              placeholder="Senha atual"
+              error={errors.old_password && errors.old_password.message}
             />
             <InputControl
               autoCapitalize="none"
               autoCorrect={false}
               control={control}
-              name="email"
-              placeholder="Email"
-              keyboardType="email-address"
-              error={errors.email && errors.email.message}
+              secureTextEntry
+              name="password"
+              placeholder="Nova senha"
+              error={errors.password && errors.password.message}
+            />
+            <InputControl
+              autoCapitalize="none"
+              autoCorrect={false}
+              control={control}
+              secureTextEntry
+              name="password_confirmation"
+              placeholder="Confirmar senha"
+              error={
+                errors.password_confirmation &&
+                errors.password_confirmation.message
+              }
             />
 
             <Button
               title="Salvar alterações"
-              onPress={handleSubmit(handleProfileEdit)}
-              disabled={!!errors.name || !!errors.email}
+              onPress={handleSubmit(handleUpdatePassword)}
+              disabled={
+                !!errors.old_password ||
+                !!errors.password ||
+                !!errors.password_confirmation
+              }
             />
           </Content>
         </Container>

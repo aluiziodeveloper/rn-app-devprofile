@@ -67,7 +67,10 @@ export const UserProfile: React.FunctionComponent = () => {
           title="Editar dados do perfil"
           onPress={() => navigate('UserProfileEdit')}
         />
-        <Button title="Trocar senha" onPress={() => {}} />
+        <Button
+          title="Trocar senha"
+          onPress={() => navigate('UserProfilePassword')}
+        />
       </Content>
     </Container>
   );
